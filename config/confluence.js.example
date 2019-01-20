@@ -1,0 +1,18 @@
+const getConfig = env => {
+  switch (env) {
+    case 'prod':
+      return {
+        baseUrl: 'https://confluence.nextiva.xyz',
+        username: '',
+        password: '',
+      };
+    case 'test':
+      return {
+        baseUrl: 'https://custom_domain.atlassian.net/wiki',
+        username: '',
+        password: '',
+      };
+  }
+};
+
+module.exports = getConfig;

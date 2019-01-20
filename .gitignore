@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+dev.json
+lib/confluence_rest_api
+logs
+config/confluence.js

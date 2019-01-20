@@ -1,0 +1,31 @@
+{
+  "name": "next-retro",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "Server for NextRetro application",
+  "scripts": {
+    "start": "NODE_PATH=. && node server.js"
+  },
+  "keywords": [
+    "atlassian",
+    "confluence",
+    "retrospective",
+    "wiki"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "compression": "^1.6.0",
+    "confluence-api": "^1.4.0",
+    "cookie-parser": "^1.4.0",
+    "dotenv": "^6.2.0",
+    "errorhandler": "^1.4.2",
+    "express": "^4.16.4",
+    "jade": "^1.11.0",
+    "lodash": "^4.17.11",
+    "nconf": "^0.10.0",
+    "request": "^2.88.0",
+    "winston": "^3.1.0",
+    "xml2js": "^0.4.19"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "host": "localhost",
+  "port": 8000,
+  "mongoose": {
+    "uri": "mongodb://localhost/nextretro",
+    "options": {
+      "server": {
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    },
+    "debug": false
+  },
+  "logger": {
+    "file": {
+      "error": "logs/error.log",
+      "info": "logs/info.log",
+      "debug": "logs/debug.log"
+    }
+  }
+}
