@@ -43,9 +43,9 @@ exports.getSpaceContent = function(req, res) {
 };
 
 exports.getPages = function(req, res) {
-  const parentId = req.params.id;
+  const parentPageId = req.params.parentPageId;
 
-  confluence.getPagesFor(parentId, (err, response) => {
+  confluence.getPagesFor(parentPageId, (err, response) => {
     res.json(contentModel.parsePages(response.results));
   });
 };
@@ -56,6 +56,18 @@ exports.getChildPages = function(req, res) {
   const cql = `cql=space.title~"${spaceName}" and type=page and parent=${parentPageId}`
 
   confluence.search(cql, (err, response) => {
+    res.json(contentModel.parsePages(response.results));
+  });
+};
+
+exports.createPage = function(req, res) {
+  console.log(req.body)
+  const spaceKey = req.body.spaceKey;
+  const parentPageId = req.body.parentPageId;
+  const content = contentModel.generateContent();
+  const title = req.body.title;
+
+  confluence.postContent(spaceKey, title, content, parentPageId, (err, response) => {
     res.json(contentModel.parsePages(response.results));
   });
 };

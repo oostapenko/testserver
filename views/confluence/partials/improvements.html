@@ -1,0 +1,10 @@
+<ac:structured-macro ac:name="panel" ac:schema-version="1" ac:macro-id="abc13d6e-391c-43d4-b1ff-46761a042022">
+  <ac:parameter ac:name="borderColor"><%= borderColor %></ac:parameter>
+  <ac:parameter ac:name="bgColor"><%= bgColor %></ac:parameter>
+  <ac:rich-text-body><h3><%= header %></h3></ac:rich-text-body>
+</ac:structured-macro>
+<ul>
+  <% improvements.forEach(function(item) { %>
+    <li><%= item.text %></li>
+  <% }); %>
+</ul>

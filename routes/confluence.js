@@ -7,7 +7,8 @@ module.exports = app => {
   app.get('/spaces', confluenceController.getSpaces);
   app.get('/space/:spaceKey', confluenceController.getSpace);
   app.get('/space/:spaceKey/content', confluenceController.getSpaceContent);
-  app.get('/content/:id/pages', confluenceController.getPages);
+  app.get('/content/:parentPageId/pages', confluenceController.getPages);
   app.get('/content/:spaceName/:parentPageId/pages', confluenceController.getChildPages);
+  app.post('/content', confluenceController.createPage);
 
 };

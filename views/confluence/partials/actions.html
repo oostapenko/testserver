@@ -1,0 +1,12 @@
+<h2>Actions</h2>
+<ac:task-list>
+  <% actions.forEach(function(action, index) { %>
+  <ac:task>
+    <ac:task-id><%= index %></ac:task-id>
+    <ac:task-status><%= action.status %></ac:task-status>
+    <ac:task-body>
+      <%= action.text %>
+    </ac:task-body>
+  </ac:task>
+  <% }); %>
+</ac:task-list>

@@ -1,0 +1,30 @@
+<table class="wrapped">
+  <colgroup>
+    <col/>
+    <col/>
+  </colgroup>
+  <tbody>
+  <tr>
+    <th>Date</th>
+    <td>
+      <div class="content-wrapper">
+        <time datetime="<%= date %>"/>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>Participants</th>
+    <td>
+      <div class="content-wrapper">
+        <% participants.forEach(function(participant) { %>
+        <p>
+          <ac:link>
+            <ri:user ri:userkey="<%= participant.userKey %>"/>
+          </ac:link>
+        </p>
+        <% }); %>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

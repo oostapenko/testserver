@@ -1,0 +1,24 @@
+<ac:layout>
+  <ac:layout-section ac:type="single">
+    <ac:layout-cell><p class="auto-cursor-target"><br/></p>
+      <ac:structured-macro ac:name="details" ac:schema-version="1" ac:macro-id="e96b6406-72a9-4c38-887d-2781664f7b1b">
+        <ac:rich-text-body><p class="auto-cursor-target"><br/></p>
+          <%- include('partials/participants.html', { participants: participants }) %>
+          <p class="auto-cursor-target"><br/></p></ac:rich-text-body>
+      </ac:structured-macro>
+    </ac:layout-cell>
+  </ac:layout-section>
+  <ac:layout-section ac:type="two_equal">
+    <ac:layout-cell><p class="auto-cursor-target"><br/></p>
+      <%- include('partials/improvements.html', { improvements: positiveImprovements, header: positiveHeader, bgColor: '#f3f9f4', borderColor: '#91c89c' }) %>
+    </ac:layout-cell>
+    <ac:layout-cell><p class="auto-cursor-target"><br/></p>
+      <%- include('partials/improvements.html', { improvements: negativeImprovements, header: negativeHeader, bgColor: '#fff8f7', borderColor: '#d04437' }) %>
+    </ac:layout-cell>
+  </ac:layout-section>
+  <ac:layout-section ac:type="single">
+    <ac:layout-cell><br/>
+      <%- include('partials/actions.html', { actions: actions }) %>
+    </ac:layout-cell>
+  </ac:layout-section>
+</ac:layout>

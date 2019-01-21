@@ -8,7 +8,8 @@ exports.parseGroups = parseGroups;
 
 const parseMembers = function(collection = []) {
   return collection.map(user => ({
-    id: user.accountId,
+    accountId: user.accountId,
+    userKey: user.userKey,
     username: user.username,
     email: user.email,
     displayName: user.displayName,
