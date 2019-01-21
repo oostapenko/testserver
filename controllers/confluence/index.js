@@ -61,14 +61,13 @@ exports.getChildPages = function(req, res) {
 };
 
 exports.createPage = function(req, res) {
-  console.log(req.body)
   const spaceKey = req.body.spaceKey;
   const parentPageId = req.body.parentPageId;
   const content = contentModel.generateContent();
   const title = req.body.title;
 
   confluence.postContent(spaceKey, title, content, parentPageId, (err, response) => {
-    res.json(contentModel.parsePages(response.results));
+    res.json(response);
   });
 };
 

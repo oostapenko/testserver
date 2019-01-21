@@ -12,6 +12,10 @@
     },
     "debug": false
   },
+  "client": {
+    "host": "http://localhost",
+    "port": 3000
+  },
   "logger": {
     "file": {
       "error": "logs/error.log",

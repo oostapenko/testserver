@@ -31,6 +31,15 @@ baseApp.use(compression());
 baseApp.use(express.static(path.join(__dirname, 'public')));
 baseApp.use(errorHandler);
 
+// Enable CORS
+api.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', config.get('client:host') + ':' + config.get('client:port'));
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Request-Method', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+  res.header('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 // Routes
 require('routes/confluence')(api);
 require('routes/app')(app);
