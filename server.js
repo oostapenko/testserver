@@ -10,26 +10,12 @@ const logger = require('lib/logger')(module);
 // Load environment variables from .env file
 dotenv.load();
 
-// Base app
+// Adding apps
 const baseApp = express();
-
-// API app
 const api = express();
-api.use(bodyParser.json());
-api.use(bodyParser.urlencoded({ extended: true }));
-
-// Main app
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 baseApp.use('/wiki/api', api);
 baseApp.use('/app/api', app);
-
-// App setup
-baseApp.use(compression());
-baseApp.use(express.static(path.join(__dirname, 'public')));
-baseApp.use(errorHandler);
 
 const enableCORS = (req, res, next) => {
   res.header('Access-Control-Allow-Origin', config.get('client:host') + ':' + config.get('client:port'));
@@ -39,13 +25,18 @@ const enableCORS = (req, res, next) => {
   next();
 };
 
-// Enable CORS
-api.use(enableCORS);
-app.use(enableCORS);
+const setupApp = (application, routePath) => {
+  application.use(express.static(path.join(__dirname, 'public')));
+  application.use(enableCORS);
+  application.use(compression());
+  application.use(bodyParser.json());
+  application.use(bodyParser.urlencoded({ extended: true }));
+  require(routePath)(application);
+  application.use(errorHandler);
+};
 
-// Routes
-require('routes/confluence')(api);
-require('routes/app')(app);
+setupApp(api, 'routes/confluence');
+setupApp(app, 'routes/app');
 
 // Catch uncought errors
 process.on('uncaughtException', err => {

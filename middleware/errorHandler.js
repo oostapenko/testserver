@@ -2,7 +2,6 @@ const http = require('http');
 const util = require('util');
 const errorhandler = require('errorhandler');
 const logger = require('lib/logger')(module);
-const ENV = process.env.NODE_ENV;
 
 function sendHttpError(res, error) {
   res.status(error.status);
@@ -36,6 +35,8 @@ module.exports.HttpError = HttpError;
  * @param next
  */
 const errorHandler = function(err, req, res, next) {
+  const ENV = process.env.NODE_ENV;
+
   if (typeof err == 'number') {
     err = new HttpError(err);
   }
