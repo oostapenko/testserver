@@ -4,11 +4,7 @@
   "mongoose": {
     "uri": "mongodb://localhost/nextretro",
     "options": {
-      "server": {
-        "socketOptions": {
-          "keepAlive": 1
-        }
-      }
+      "keepAlive": true
     },
     "debug": false
   },
