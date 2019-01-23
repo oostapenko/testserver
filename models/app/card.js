@@ -1,8 +1,8 @@
 const mongoose = require('db');
 const CardModel = require('db/schemas/card').model;
 
-module.exports.addCard = ({ sectionId, title }) => {
-  const card = new CardModel({ sectionId: mongoose.Types.ObjectId(sectionId), title });
+module.exports.addCard = ({ sectionId, text }) => {
+  const card = new CardModel({ sectionId, text });
   return card.save();
 };
 
@@ -10,7 +10,7 @@ module.exports.getCards = sectionId => {
   return CardModel.find({ sectionId });
 };
 
-module.exports.updateCard = ({ cardId, sectionId, text, votes }) => {
+module.exports.updateCard = ({ cardId, text, votes }) => {
   return CardModel.findOneAndUpdate(
     { _id: cardId },
     { text, votes },

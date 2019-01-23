@@ -15,7 +15,7 @@ module.exports.addCard = function(req, res, next) {
   const sectionId = req.body.sectionId;
 
   cardModel.addCard({ sectionId, text })
-    .then(card => sectionModel.getCards(sectionId))
+    .then(card => cardModel.getCards(sectionId))
     .then(cards => res.json(cards))
     .catch(err => next(err));
 };
@@ -26,7 +26,7 @@ module.exports.updateCard = function(req, res, next) {
   const votes = req.body.votes;
 
   cardModel.updateCard({ cardId, text, votes })
-    .then(card => sectionModel.getCards(card.sectionId))
+    .then(card => cardModel.getCards(card.sectionId))
     .then(cards => res.json(cards))
     .catch(err => next(err));
 };

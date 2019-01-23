@@ -27,10 +27,12 @@ exports.addSection = function(req, res, next) {
 };
 
 exports.deleteSection = function(req, res, next) {
+  const userId = req.session.userId;
   const sectionId = req.params.sectionId;
 
   sectionModel.deleteSection(sectionId)
-    .then(section => sectionModel.getSections(section.roomId))
+    .then(() => userModel.getUser(userId))
+    .then(user => sectionModel.getSections(user.roomId))
     .then(sections => res.json(sections))
     .catch(err => next(err));
 };
