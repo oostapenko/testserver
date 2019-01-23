@@ -4,8 +4,8 @@ const options = require('./schemaOptions');
 const schema = new mongoose.Schema({
   text: { type: String, required: true },
   votes: Number,
-  sectionId: mongoose.Types.ObjectId,
+  sectionId: { type: mongoose.Types.ObjectId, required: true },
 }, options);
 
-exports = schema;
-exports.model = mongoose.model('Card', schema);
+module.exports = schema;
+module.exports.model = mongoose.model('Card', schema);

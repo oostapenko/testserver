@@ -4,3 +4,4 @@ dev.json
 lib/confluence_rest_api
 logs
 config/confluence.js
+session-store
